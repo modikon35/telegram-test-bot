@@ -16,6 +16,7 @@
     <description>Demo project for Telegram bot using Springboot</description>
     <properties>
         <java.version>8</java.version>
+        <telegram.version>5.0.1</telegram.version>
     </properties>
     <dependencies>
         <dependency>
@@ -38,9 +39,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+        <groupId>org.telegram</groupId>
+        <artifactId>telegrambots</artifactId>
+        <version>${telegram.version}</version>
+    </dependency>
+        <dependency>
             <groupId>org.telegram</groupId>
-            <artifactId>telegrambots</artifactId>
-            <version>5.0.1</version>
+            <artifactId>telegrambotsextensions</artifactId>
+            <version>${telegram.version}</version>
         </dependency>
     </dependencies>
 
