@@ -11,7 +11,7 @@
     <groupId>com.modikon35</groupId>
     <artifactId>telegram-test-bot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>TelegramTestBot</name>
     <description>Demo project for Telegram bot using Springboot</description>
     <properties>
