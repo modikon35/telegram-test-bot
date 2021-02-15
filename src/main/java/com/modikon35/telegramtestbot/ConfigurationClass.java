@@ -1,6 +1,5 @@
 package com.modikon35.telegramtestbot;
 
-import com.modikon35.telegramtestbot.commands.NewTestCommand;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -18,7 +17,7 @@ public class ConfigurationClass {
         try {
             //myTestBot.register(new NewTestCommand());
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-            String url = "https://modikon35formbot.herokuapp.com/" + System.getenv("TOKEN") + "webhook";
+            String url = "https://modikon35formbot.herokuapp.com/webhook";
             telegramBotsApi.registerBot(myTestBot, new SetWebhook(url));
         } catch (TelegramApiException e) {
             e.printStackTrace();
