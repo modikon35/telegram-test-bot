@@ -17,7 +17,8 @@ public class ConfigurationClass {
         try {
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
             String url = "https://modikon35formbot.herokuapp.com/webhook";
-            telegramBotsApi.registerBot(myTestBot, new SetWebhook(url));
+            myTestBot.setWebhook(new SetWebhook(url));
+            telegramBotsApi.registerBot(myTestBot, new SetWebhook());
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
