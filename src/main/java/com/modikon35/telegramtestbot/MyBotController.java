@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @RestController
 public class MyBotController {
@@ -18,7 +19,7 @@ public class MyBotController {
     }
 
     @PostMapping("/webhook")
-    public void webhook(@RequestBody Update update) {
-        myTestBot.onWebhookUpdateReceived(update);
+    public void webhook(@RequestBody Update update) throws TelegramApiException {
+        myTestBot.execute(myTestBot.onWebhookUpdateReceived(update));
     }
 }
