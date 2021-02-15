@@ -26,7 +26,13 @@ public class MyTestBot extends TelegramWebhookBot {
 
     @Override
     public BotApiMethod<Message> onWebhookUpdateReceived(Update update) {
-        List<String> definitions = DictionaryParser.getDefinitions(update.getMessage().getText());
+        List<String> definitions;
+
+        try {
+            definitions = DictionaryParser.getDefinitions(update.getMessage().getText());
+        } catch (Exception e) {
+            return new SendMessage(update.getMessage().getChatId().toString(), e.getMessage());
+        }
 
         SendMessage.SendMessageBuilder sendMessageBuilder = SendMessage.builder();
 
