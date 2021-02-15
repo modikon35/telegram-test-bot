@@ -22,7 +22,7 @@ public class MyBotController {
     }
 
     @PostMapping("/webhook")
-    public BotApiObject webhook(@RequestBody Update update) {
+    public Message webhook(@RequestBody Update update) {
         Message message = new Message();
         message.setText("TEXT");
         message.setChat(update.getMessage().getChat());
