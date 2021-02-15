@@ -48,6 +48,6 @@ public class MyTestBot extends TelegramWebhookBot {
 
     @Override
     public String getBotPath() {
-        return "https://modikon35formbot.herokuapp.com/" + System.getenv("TOKEN") + "webhook";
+        return System.getenv("TOKEN") + "webhook";
     }
 }
