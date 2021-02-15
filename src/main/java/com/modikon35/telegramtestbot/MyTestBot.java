@@ -48,21 +48,6 @@ public class MyTestBot extends TelegramWebhookBot {
     }
 
     @Override
-    public void onRegister() {
-        try {
-            WebhookUtils.clearWebhook(this);
-        } catch (TelegramApiRequestException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            WebhookUtils.setWebhook(this, new SetWebhook("https://modikon35formbot.herokuapp.com/webhook"));
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
     public String getBotPath() {
         return USERNAME;
     }
