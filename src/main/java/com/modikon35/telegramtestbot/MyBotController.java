@@ -20,8 +20,7 @@ public class MyBotController {
     }
 
     @RequestMapping("/webhook")
-    public ResponseEntity webhook(@RequestBody Update update) throws TelegramApiException {
+    public void webhook(@RequestBody Update update) throws TelegramApiException {
         myTestBot.execute(myTestBot.onWebhookUpdateReceived(update));
-        return ResponseEntity.ok().build();
     }
 }
