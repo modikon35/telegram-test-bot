@@ -14,7 +14,6 @@ import org.telegram.telegrambots.util.WebhookUtils;
 
 import java.util.List;
 
-@Component
 public class MyTestBot extends TelegramWebhookBot {
 
     private static final String USERNAME = "modikon35_form_bot";
