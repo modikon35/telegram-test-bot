@@ -1,16 +1,11 @@
 package com.modikon35.telegramtestbot;
 
 import com.modikon35.untitled.DictionaryParser;
-import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
-import org.telegram.telegrambots.util.WebhookUtils;
 
 import java.util.List;
 
