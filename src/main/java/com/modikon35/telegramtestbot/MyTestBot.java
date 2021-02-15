@@ -29,7 +29,7 @@ public class MyTestBot extends TelegramWebhookBot {
 
         return sendMessageBuilder
                 .chatId(update.getMessage().getChatId().toString())
-                .text("TEXT")
+                .text("TEXT - " + update.getUpdateId())
                 .build();
     }
 
