@@ -1,6 +1,6 @@
 package com.modikon35.telegramtestbot;
 
-import com.modikon35.DictionaryParser;
+import com.modikon35.untitled.DictionaryParser;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
