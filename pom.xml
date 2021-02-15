@@ -18,6 +18,14 @@
         <java.version>8</java.version>
         <telegram.version>5.0.1</telegram.version>
     </properties>
+    <repositories>
+        <!--other repositories if any-->
+        <repository>
+            <id>project.local</id>
+            <name>project</name>
+            <url>file:C:Users\modikon35\.m2\repository</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
