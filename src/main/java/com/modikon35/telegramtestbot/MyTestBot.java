@@ -31,7 +31,7 @@ public class MyTestBot extends TelegramWebhookBot {
         try {
             definitions = DictionaryParser.getDefinitions(update.getMessage().getText());
         } catch (Exception e) {
-            return new SendMessage(update.getMessage().getChatId().toString(), e.getMessage());
+            return new SendMessage(update.getMessage().getChatId().toString(), "Не удалось обработать слово..");
         }
 
         SendMessage.SendMessageBuilder sendMessageBuilder = SendMessage.builder();
