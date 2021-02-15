@@ -18,8 +18,8 @@ public class MyBotController {
         this.myTestBot = myTestBot;
     }
 
-//    @PostMapping("/webhook")
-//    public void webhook(@RequestBody Update update) throws TelegramApiException {
-//        myTestBot.execute(myTestBot.onWebhookUpdateReceived(update));
-//    }
+    @PostMapping("/webhook")
+    public void webhook(@RequestBody Update update) throws TelegramApiException {
+        myTestBot.execute(myTestBot.onWebhookUpdateReceived(update));
+    }
 }
