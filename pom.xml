@@ -23,7 +23,7 @@
         <repository>
             <id>project.local</id>
             <name>untitled</name>
-            <url>file:${basedir}/repo</url>
+            <url>${basedir}/repo</url>
         </repository>
     </repositories>
     <dependencies>
