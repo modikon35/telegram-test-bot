@@ -23,7 +23,7 @@
         <repository>
             <id>project.local</id>
             <name>untitled</name>
-            <url>${basedir}/repo</url>
+            <url>file:${basedir}/repo</url>
         </repository>
     </repositories>
     <dependencies>
@@ -31,11 +31,6 @@
             <groupId>com.modikon35</groupId>
             <artifactId>untitled</artifactId>
             <version>0.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.10.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
