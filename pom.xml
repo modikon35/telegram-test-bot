@@ -21,9 +21,9 @@
     <repositories>
         <!--other repositories if any-->
         <repository>
-            <id>project.local</id>
+            <id>repo</id>
             <name>untitled</name>
-            <url>file:${basedir}/repo</url>
+            <url>file://${basedir}/repo</url>
         </repository>
     </repositories>
     <dependencies>
