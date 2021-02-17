@@ -43,7 +43,7 @@ public class MyTestBot extends TelegramWebhookBot {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (DetailedTranslation str : translation.getTranslationResult().getMeanings().get(0).getDetailedTranslations()) {
-            stringBuilder.append(str.getTranslation());
+            stringBuilder.append(str.getTranslation()).append('\n');
         }
 
         return sendMessageBuilder
