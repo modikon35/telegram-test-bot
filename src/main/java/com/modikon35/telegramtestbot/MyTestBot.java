@@ -1,6 +1,10 @@
 package com.modikon35.telegramtestbot;
 
 import com.modikon35.untitled.DictionaryParser;
+import com.modikon35.untitled.TranslationController;
+import com.modikon35.untitled.YandexDictionaryParser;
+import com.modikon35.untitled.translation.DetailedTranslation;
+import com.modikon35.untitled.translation.Translation;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -26,10 +30,10 @@ public class MyTestBot extends TelegramWebhookBot {
 
     @Override
     public BotApiMethod<Message> onWebhookUpdateReceived(Update update) {
-        List<String> definitions;
+        Translation translation;
 
         try {
-            definitions = DictionaryParser.getDefinitions(update.getMessage().getText());
+            translation = TranslationController.getTranslation(update.getMessage().getText());
         } catch (Exception e) {
             return new SendMessage(update.getMessage().getChatId().toString(), "Не удалось обработать слово..");
         }
@@ -38,8 +42,8 @@ public class MyTestBot extends TelegramWebhookBot {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (String str : definitions) {
-            stringBuilder.append(str);
+        for (DetailedTranslation str : translation.getTranslationResult().getMeanings().get(0).getDetailedTranslations()) {
+            stringBuilder.append(str.getTranslation());
         }
 
         return sendMessageBuilder
