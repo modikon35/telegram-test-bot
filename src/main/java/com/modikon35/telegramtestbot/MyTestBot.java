@@ -6,6 +6,7 @@ import com.modikon35.untitled.YandexDictionaryParser;
 import com.modikon35.untitled.translation.DetailedTranslation;
 import com.modikon35.untitled.translation.Meaning;
 import com.modikon35.untitled.translation.Translation;
+import com.modikon35.untitled.translation.TranslationResult;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -43,11 +44,13 @@ public class MyTestBot extends TelegramWebhookBot {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        List<Meaning> meanings = translation.getTranslationResult().getMeanings();
+        TranslationResult translationResult = translation.getTranslationResult();
 
-        if (meanings.isEmpty()) {
+        if (translationResult == null) {
             return new SendMessage(update.getMessage().getChatId().toString(), "Не удалось найти перевод..");
         }
+
+        List<Meaning> meanings = translationResult.getMeanings();
 
         for (DetailedTranslation str : meanings.get(0).getDetailedTranslations()) {
             stringBuilder.append(str.getTranslation()).append('\n');
