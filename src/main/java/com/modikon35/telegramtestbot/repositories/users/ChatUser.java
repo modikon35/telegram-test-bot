@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class ChatUser {
     @Id
-    private long id;
+    private int id;
 
     @Column(name = "is_bot")
     private boolean isBot;
@@ -22,7 +22,7 @@ public class ChatUser {
     @Column(name = "chat_id")
     private int chatId;
 
-    public ChatUser(long id, boolean isBot, String firstName, String username, int chatId) {
+    public ChatUser(int id, boolean isBot, String firstName, String username, int chatId) {
         this.id = id;
         this.isBot = isBot;
         this.firstName = firstName;
