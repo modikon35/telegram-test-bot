@@ -27,7 +27,7 @@ public class ConfigurationClass {
         try {
             WebhookUtils.clearWebhook(myTestBot);
         } catch (TelegramApiRequestException e) {
-            e.printStackTrace();
+            System.out.println("Не удалось удалить Вебхук при старте бота..");
         }
 
         try {
