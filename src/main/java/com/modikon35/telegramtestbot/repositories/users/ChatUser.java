@@ -22,6 +22,9 @@ public class ChatUser {
     @Column(name = "chat_id")
     private int chatId;
 
+    public ChatUser() {
+    }
+
     public ChatUser(int id, boolean isBot, String firstName, String username, int chatId) {
         this.id = id;
         this.isBot = isBot;
