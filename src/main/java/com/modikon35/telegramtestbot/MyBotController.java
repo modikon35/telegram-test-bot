@@ -24,6 +24,7 @@ public class MyBotController {
         try {
             myTestBot.execute(myTestBot.onWebhookUpdateReceived(update));
         } catch (Exception e) {
+            e.printStackTrace();
             try {
                 myTestBot.execute(new SendMessage(update.getMessage().getChatId().toString(), "Не удалось обработать сообщение(WebHook).."));
             } catch (TelegramApiException ex) {
