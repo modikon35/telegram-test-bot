@@ -22,7 +22,7 @@ public class MyBotController {
     public void webhook(@RequestBody Update update) {
         try {
             myTestBot.execute(myTestBot.onWebhookUpdateReceived(update));
-        } catch (TelegramApiException e) {
+        } catch (Exception e) {
             try {
                 myTestBot.execute(new SendMessage(update.getMessage().getChatId().toString(), "Не удалось обработать сообщение(WebHook).."));
             } catch (TelegramApiException ex) {
