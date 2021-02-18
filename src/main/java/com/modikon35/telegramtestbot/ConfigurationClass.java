@@ -1,5 +1,6 @@
 package com.modikon35.telegramtestbot;
 
+import com.modikon35.telegramtestbot.repositories.users.UsersRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
