@@ -28,11 +28,10 @@
     </repositories>
     <dependencies>
         <dependency>
-            <groupId>com.modikon</groupId>
+            <groupId>com.modikon35</groupId>
             <artifactId>untitled</artifactId>
             <version>0.0.2</version>
         </dependency>
-
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-gson</artifactId>
@@ -65,6 +64,11 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.18</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
         </dependency>
 
         <dependency>

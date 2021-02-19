@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
@@ -30,6 +32,16 @@ public class MyBotController {
             } catch (TelegramApiException ex) {
                 ex.printStackTrace();
             }
+        }
+    }
+
+    @PostMapping("/localwebhook")
+    public BotApiMethod<Message> localwebhook(@RequestBody Update update) {
+        try {
+            return myTestBot.onWebhookUpdateReceived(update);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new SendMessage(update.getMessage().getChatId().toString(), "Не удалось обработать сообщение(WebHook)..");
         }
     }
 }
