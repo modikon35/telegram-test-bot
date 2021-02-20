@@ -68,7 +68,7 @@ public class MyTestBot extends TelegramWebhookBot {
         StringBuilder stringBuilder = new StringBuilder();
 
         translations.forEach((k, v) -> stringBuilder
-                .append("<i>").append(k).append("<i>")
+                .append("<i>").append(k).append("</i>")
                 .append("\n")
                 .append(String.join(", ", v))
                 .append("\n"));
