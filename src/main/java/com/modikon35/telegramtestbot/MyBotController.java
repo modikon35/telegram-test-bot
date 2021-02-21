@@ -1,6 +1,5 @@
 package com.modikon35.telegramtestbot;
 
-import com.modikon35.telegramtestbot.repositories.users.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +27,14 @@ public class MyBotController {
         } catch (Exception e) {
             e.printStackTrace();
             try {
-                myTestBot.execute(new SendMessage(update.getMessage().getChatId().toString(), "Не удалось обработать сообщение(WebHook).."));
+                String chatId = update.getMessage()
+                        .getChatId()
+                        .toString();
+
+                myTestBot.execute(
+                        new SendMessage(
+                                chatId,
+                                "Не удалось обработать сообщение(WebHook).."));
             } catch (TelegramApiException ex) {
                 ex.printStackTrace();
             }
@@ -41,7 +47,10 @@ public class MyBotController {
             return myTestBot.onWebhookUpdateReceived(update);
         } catch (Exception e) {
             e.printStackTrace();
-            return new SendMessage(update.getMessage().getChatId().toString(), "Не удалось обработать сообщение(WebHook)..");
+            String chatId = update.getMessage()
+                    .getChatId()
+                    .toString();
+            return new SendMessage(chatId, "Не удалось обработать сообщение(WebHook)..");
         }
     }
 }

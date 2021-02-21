@@ -1,8 +1,8 @@
 package com.modikon35.telegramtestbot;
 
 import com.modikon.untitled.DictionaryService;
-import com.modikon.untitled.TranslationController;
-import com.modikon.untitled.TranslationControllerFactory;
+import com.modikon.untitled.translationcontrollers.TranslationController;
+import com.modikon.untitled.translationcontrollers.TranslationControllerFactory;
 import com.modikon35.telegramtestbot.repositories.users.ChatUser;
 import com.modikon35.telegramtestbot.repositories.users.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +36,6 @@ public class MyTestBot extends TelegramWebhookBot {
 
     @Override
     public BotApiMethod<Message> onWebhookUpdateReceived(Update update) {
-        Map<String, List<String>> translations;
-
         Message incomingMessage = update.getMessage();
 
         User user = incomingMessage.getFrom();
@@ -45,25 +43,34 @@ public class MyTestBot extends TelegramWebhookBot {
         ChatUser telegramChatUser = usersRepository.findById(user.getId()).orElse(null);
 
         if (telegramChatUser == null) {
-            telegramChatUser = new ChatUser(
-                    user.getId(),
-                    incomingMessage.hasViaBot(),
-                    user.getFirstName(),
-                    user.getUserName(),
-                    incomingMessage.getChatId().intValue());
+            telegramChatUser = new ChatUser(incomingMessage);
 
             usersRepository.save(telegramChatUser);
         }
 
+        String response;
         try {
-            TranslationController translationController = TranslationControllerFactory
-                    .setTranslationController(DictionaryService.YANDEX, incomingMessage.getText());
-            translations = translationController.getTranslations();
+            response = prepareMessageToResponse(incomingMessage);
         } catch (Exception e) {
-            return new SendMessage(update.getMessage().getChatId().toString(), "Не удалось обработать слово..");
+            e.printStackTrace();
+            return new SendMessage(incomingMessage.getChatId().toString(), "Не удалось обработать слово..");
         }
 
         SendMessage.SendMessageBuilder sendMessageBuilder = SendMessage.builder();
+
+        return sendMessageBuilder
+                .chatId(update.getMessage().getChatId().toString())
+                .parseMode("html")
+                .text(response)
+                .build();
+    }
+
+    private static String prepareMessageToResponse(Message message) {
+        Map<String, List<String>> translations;
+
+        TranslationController translationController = TranslationControllerFactory
+                .createTranslationController(DictionaryService.YANDEX_API, message.getText());
+        translations = translationController.getTranslations();
 
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -73,11 +80,7 @@ public class MyTestBot extends TelegramWebhookBot {
                 .append(String.join(", ", v))
                 .append("\n"));
 
-        return sendMessageBuilder
-                .chatId(update.getMessage().getChatId().toString())
-                .parseMode("html")
-                .text(stringBuilder.toString())
-                .build();
+        return stringBuilder.toString();
     }
 
     @Override

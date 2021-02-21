@@ -1,5 +1,8 @@
 package com.modikon35.telegramtestbot.repositories.users;
 
+import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.User;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,11 +28,12 @@ public class ChatUser {
     public ChatUser() {
     }
 
-    public ChatUser(int id, boolean isBot, String firstName, String username, int chatId) {
-        this.id = id;
-        this.isBot = isBot;
-        this.firstName = firstName;
-        this.username = username;
-        this.chatId = chatId;
+    public ChatUser(Message message) {
+        User user = message.getFrom();
+        this.id = user.getId();
+        this.isBot = message.hasViaBot();
+        this.firstName = user.getFirstName();
+        this.username = user.getUserName();
+        this.chatId = message.getChatId().intValue();
     }
 }
